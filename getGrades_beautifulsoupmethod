@@ -1,0 +1,104 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr 20 20:13:25 2017
+
+@author: lauge
+"""
+
+import urllib2
+from bs4 import BeautifulSoup
+import pandas as pd
+import string
+
+
+# manuel
+#url = 'http://karakterer.dtu.dk/Histogram/1/02411/Winter-2015'
+        #kursus = ['02410'] # from loop ofc
+        #semester = ['Winter-2017'] # from loop ofc
+
+# loop
+baseUrl = 'http://karakterer.dtu.dk/Histogram/1/'
+# input courses and time here
+courseList = ['02411', '41525']
+semesterList = ['Winter-2015', 'Winter-2014']
+
+for i in range(len(semesterList)):
+    for j in range(len(courseList)):
+        url = baseUrl+courseList[j]+"/"+semesterList[i]
+        semester = [semesterList[i]]
+        kursus = [courseList[i]]
+        page = urllib2.urlopen(url).read()
+        soup = BeautifulSoup(page, "lxml")
+        antalTilmeldte = []
+        k12 = []
+        k10 = []
+        k7 = []
+        k4 = []
+        k02 = []
+        k00 = []
+        km3 = []
+
+        itt = 0
+        for tr in soup.find_all('tr')[0:]:
+            itt = itt+1
+            tds = tr.find_all('td')
+            length = len(tds)
+            # when itt = 1, tilmeldte.. and so forth..
+            if itt == 1:
+                antalTilmeldte = tds[1].text
+                antalTilmeldte = antalTilmeldte.strip()
+            else:
+                pass
+            if itt == 2:
+                fremmodte = tds[1].text
+                fremmodte = fremmodte.strip()
+            else:
+                pass
+            if itt == 8:
+                k12 = tds[1].text
+                k12 = k12.strip()
+            else:
+                pass
+            if itt == 9:
+                k10 = tds[1].text
+                k10 = k10.strip()
+            else:
+                pass
+            if itt == 10:
+                k7 = tds[1].text
+                k7 = k7.strip()
+            else:
+                pass
+            if itt == 11:
+                k4 = tds[1].text
+                k4 = k4.strip()
+            else:
+                pass
+            if itt == 12:
+                k02 = tds[1].text
+                k02 = k02.strip()
+            else:
+                pass
+            if itt == 13:
+                k00 = tds[1].text
+                k00 = k00.strip()
+            else:
+                pass
+            if itt == 14:
+                km3 = tds[1].text
+                km3 = km3.strip()
+            else:
+                pass
+            #print "itt %d " % (itt)
+            #print "length %d " % (length)
+            #for l in range(0,length):
+            #    print tds[l].text
+        print "done"
+
+
+        columns = {'course': kursus, 'semester': semester, 'antal': antalTilmeldte, 'fremmodte': fremmodte,
+                   'k12': k12, 'k10': k10, 'k7': k7, 'k4': k4
+                   , 'k02': k02, 'k00': k00, 'km3': km3}
+        df = pd.DataFrame(columns)
+        print(df)
+#print df.k12[0]
