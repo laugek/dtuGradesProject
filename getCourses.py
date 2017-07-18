@@ -123,7 +123,7 @@ def retrieveCourseID(string):
 	try:
 		value = regex.search(string).group()
 	except:
-		value = string
+		value = ahstring
 	return(value)
 
 ##################################################################################################################

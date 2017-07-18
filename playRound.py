@@ -17,6 +17,8 @@ MdbURI = "mongodb://admin:datbat333@localhost:27017/tracking?authSource=admin"
 client = MongoClient(MdbURI)
 # starting database
 db = client['test-database']
+# restarting the collection...
+db.posts.drop()
 # creating a collection
 posts = db['posts']
 

@@ -216,7 +216,7 @@ def init_driver():
 ### Method: Initialization-point of the script. Put main methods here.
 if __name__ == "__main__":
     driver = init_driver()
-    courseCollection = list(courseColl.find())[0:2]
+    courseCollection = list(courseColl.find())
     masta(courseCollection)
     time.sleep(1)
     driver.close()

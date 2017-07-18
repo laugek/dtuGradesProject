@@ -1,0 +1,55 @@
+ http://kurser.dtu.dk/course/10050/info 
+
+
+Found evaluation href: https://evaluering.dtu.dk/kursus/10050/132262
+Found evaluation href: https://evaluering.dtu.dk/kursus/10050/109857
+Found evaluation href: https://evaluering.dtu.dk/kursus/10050/81037
+
+Found grade href: http://karakterer.dtu.dk/Histogram/1/10050/Summer-2016
+Found grade href: http://karakterer.dtu.dk/Histogram/1/10050/Summer-2015
+
+
+semester Summer-2016
+This is 12-grade scaling
+['12', '10', '7', '4', '02', '00', '-3', 'Syg', 'Ej mødt']
+['10', '20', '20', '20', '20', '15', '6', '1', '16']
+
+tilmeldte 128
+fremmoedte 111
+eksgns 5,1
+
+Inserted in to database:
+{'course_id': '10050', 'eksgns': '5,1', 'list_students': ['10', '20', '20', '20', '20', '15', '6', '1', '16'], 'list_grades': ['12', '10', '7', '4', '02', '00', '-3', 'Syg', 'Ej mødt'], 'timestamp': '2017-06-11 00:30:12', 'tilmeldte': '128', 'course_url': 'http://karakterer.dtu.dk/Histogram/1/10050/Summer-2016', 'fremmoedte': '111', 'semester': 'Summer-2016'}
+
+semester Summer-2015
+This is 12-grade scaling
+['12', '10', '7', '4', '02', '00', '-3', 'Ej mødt']
+['11', '19', '21', '21', '10', '7', '4', '4']
+
+tilmeldte 97
+fremmoedte 93
+eksgns 6 (
+
+Inserted in to database:
+{'course_id': '10050', 'eksgns': '6 (', 'list_students': ['11', '19', '21', '21', '10', '7', '4', '4'], 'list_grades': ['12', '10', '7', '4', '02', '00', '-3', 'Ej mødt'], 'timestamp': '2017-06-11 00:30:20', 'tilmeldte': '97', 'course_url': 'http://karakterer.dtu.dk/Histogram/1/10050/Summer-2015', 'fremmoedte': '93', 'semester': 'Summer-2015'}
+
+ http://kurser.dtu.dk/course/10052/info 
+
+Traceback (most recent call last):
+  File "getGrades.py", line 220, in <module>
+    masta(courseCollection)
+  File "getGrades.py", line 63, in masta
+    [hrefEval, semesterEvalList, hrefGrades, semesterGradeList] = findSemesters(course)
+  File "getGrades.py", line 117, in findSemesters
+    driver.get(url)
+  File "/home/lauge/.local/lib/python3.5/site-packages/selenium/webdriver/remote/webdriver.py", line 268, in get
+    self.execute(Command.GET, {'url': url})
+  File "/home/lauge/.local/lib/python3.5/site-packages/selenium/webdriver/remote/webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "/home/lauge/.local/lib/python3.5/site-packages/selenium/webdriver/remote/errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: timeout: cannot determine loading status
+from timeout: Timed out receiving message from renderer: -0.004
+  (Session info: chrome=58.0.3029.110)
+  (Driver info: chromedriver=2.26.436382 (70eb799287ce4c2208441fc057053a5b07ceabac),platform=Linux 4.8.0-54-generic x86_64)
+
